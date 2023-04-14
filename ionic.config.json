@@ -1,0 +1,7 @@
+{
+  "name": "Prova_SilvioLucas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
