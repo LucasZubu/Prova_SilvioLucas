@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ClientesService } from './../services/clientes.service';
+import { ClientesService } from '../services/clientes.service';
+
 
 @Component({
   selector: 'app-home',
