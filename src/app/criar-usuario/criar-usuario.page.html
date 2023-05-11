@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>criar-usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+
+    <ion-item>
+      <ion-input labelPlacement="floating" type="text" label="Primeiro nome: " [(ngModel)]="first_name"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input labelPlacement="floating" type="text" label="Ultimo nome:" [(ngModel)]="last_name" ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input labelPlacement="floating" type="email" label="Email: " [(ngModel)]="email"></ion-input>
+    </ion-item>
+  
+   </ion-card>
+  
+    <ion-button expand="block" (click)="salvar()">
+      Adicionar
+    </ion-button>
+  
+</ion-content>

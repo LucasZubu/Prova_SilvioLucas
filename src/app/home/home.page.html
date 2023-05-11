@@ -1,21 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Lista Usuarios
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-button></ion-button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item *ngFor="let user of listaUsuarios">
+    
+    <ion-item>
+      <ion-avatar slot="start">
+        <img alt="avatar" src="{{user.avatar}}" />
+      </ion-avatar>
+      <h1>{{user.email}} </h1>
+      <p>{{user.first_name}}</p>
+      <p>{{user.last_name}}</p>
+    </ion-item>
+
+    <ion-button color="warning"  (click)="alterarUsuario(user.id!)">
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button color="danger" (click)="excluirUsuario(user.id!)" >
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  
+  </ion-item>
+
+  <ion-button routerLink="/criar-usuario"> 
+    Adicionar Usuario
+  </ion-button>
+
 </ion-content>
