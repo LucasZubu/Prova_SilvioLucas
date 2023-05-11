@@ -1,3 +1,6 @@
+import { User } from './../models/user.model';
+import { UserService } from './../services/user.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,14 +15,31 @@ import { IonicModule } from '@ionic/angular';
 })
 export class CriarUsuarioPage implements OnInit {
 
+  email = '';
   first_name = '';
   last_name = '';
-  email = '';
-  
-  constructor() { }
+  avatar = '';
+
+  constructor(private route: Router, private userService : UserService) { }
 
   ngOnInit() {
   }
 
-    salvar(){}
-} 
+  salvar(){
+
+      const user : User = {
+        email: this.email,
+        first_name : this.first_name,
+        last_name : this.last_name,
+        avatar : this.avatar
+      }
+      this.userService.create(user).subscribe(dados => {
+        alert('Cliente Inserido com sucesso: ' + dados.id)
+        // navegação vem aqui
+        this.route.navigateByUrl('/home');
+        //this.route.navigate(['/home']);
+      })
+      //Nunca colocar a navegação fora... vai voltar sem saber a resposta
+
+  }
+}

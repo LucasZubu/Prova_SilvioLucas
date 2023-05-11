@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
 
   <ion-item *ngFor="let user of listaUsuarios">
-    
+
     <ion-item>
       <ion-avatar slot="start">
         <img alt="avatar" src="{{user.avatar}}" />
@@ -26,11 +26,14 @@
     <ion-button color="danger" (click)="excluirUsuario(user.id!)" >
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>
-  
+
   </ion-item>
 
-  <ion-button routerLink="/criar-usuario"> 
+  <ion-button routerLink="/criar-usuario">
     Adicionar Usuario
+  </ion-button>
+  <ion-button (click)="buscarUsuarios()">
+    teste
   </ion-button>
 
 </ion-content>
