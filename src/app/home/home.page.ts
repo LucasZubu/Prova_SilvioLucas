@@ -15,17 +15,19 @@ import { UserService } from '../services/user.service';
   imports: [IonicModule, CommonModule ,RouterLink]})
 export class HomePage implements OnInit{
 
-  listaUsuarios: User[] = []
+  listaUsuarios: User[] = [];
 
   constructor(private userService: UserService, private router: Router,private http: HttpClient) {  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.buscarUsuarios();
+  }
 
   ionViewWillEnter(){
     this.buscarUsuarios();
   }
 
-  buscarUsuarios(){
+  buscarUsuarios = () => {
     this.userService.getAll().subscribe(dados => {
       this.listaUsuarios = dados;
     });

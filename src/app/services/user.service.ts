@@ -1,3 +1,4 @@
+import { Resp } from './../models/resp.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
@@ -21,19 +22,25 @@ export class UserService {
 
 
   getAll() : Observable<User[]> {
-    return this.http.get<User[]>(this.url).pipe(
-      map(retorno => retorno),
+    return this.http.get<Resp>(this.url).pipe(
+      map(retorno => retorno.data),
       catchError(erro => this.exibirErro(erro))
     );
   }
 
-  getOne(id: number): Observable<User> {
+  getOne(id: number):Observable<User>{
     // return this.http.get(this.url + '/' + id);
-    return this.http.get<User>(`${this.url}/${id}`);
+     return this.http.get<Resp>(`${this.url}/${id}`).pipe(
+       map(retorno => retorno.data),
+       catchError(erro => this.exibirErro(erro))
+       );
   }
 
-  update(user: User): Observable<User> {
-    return this.http.put<User>(`${this.url}/${user.id}`, user);
+  update(user: User):Observable<User>{
+    return this.http.put<User>(`${this.url}/${user.id}`, user).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirErro(erro))
+      );
   }
 
   delete(id: number) {
